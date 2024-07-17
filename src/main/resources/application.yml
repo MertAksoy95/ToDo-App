@@ -1,0 +1,50 @@
+# Default
+server:
+  port: 9100
+  tomcat:
+    accept-count: 500
+  servlet:
+    context-path: /todoapp
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+spring:
+  application:
+    name: todoapp
+  jackson:
+    default-property-inclusion: non_null
+    time-zone: Europe/Istanbul
+  couchbase:
+    username: admin
+    password: admin123
+    connection-string: couchbase://127.0.0.1
+  data:
+    couchbase:
+      bucket-name: ToDoApp
+      auto-index: true
+
+springdoc:
+  packagesToScan: com.mertaksoy.todoapp
+
+jwt:
+  secretKey: K5H8Nq1vPrtk8h62zs207MKUy5xzHNuSRtmhGmAGL42CapP9a
+  session-expiration-time: 18000000  # 30 Minutes
+
+hazelcast:
+  map:
+    time-to-live-minutes: 30
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: preprod
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod

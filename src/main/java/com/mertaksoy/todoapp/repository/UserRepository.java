@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends CouchbaseRepository<User, String> {
 
-    User findByUsername(String email);
+    User findByUsername(String username);
 
 }

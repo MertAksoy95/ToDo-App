@@ -9,6 +9,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CategoryRepository extends CouchbaseRepository<Category, String> {
 
+    long countByUserId(String userId);
+
+    Category findByTitle(String title);
+
     Category findByTitleAndUserId(String title, String userId);
 
     Page<Category> findAllByUserId(Pageable pageable, String userId);

@@ -1,13 +1,17 @@
 package com.mertaksoy.todoapp.config;
 
 
+import com.mertaksoy.todoapp.entity.Category;
 import com.mertaksoy.todoapp.entity.User;
+import com.mertaksoy.todoapp.repository.CategoryRepository;
 import com.mertaksoy.todoapp.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * This is our class that adds user to the database for testing when the application first boots up.
@@ -28,6 +32,7 @@ public class InitialConfig {
     @Value("${spring.data.couchbase.bucket-name}")
     private String couchbaseBucketName;
 
+    private final CategoryRepository categoryRepo;
     private final UserRepository userRepo;
 
 
@@ -43,14 +48,25 @@ public class InitialConfig {
         }*/
 
         // initUser
+        User user = null;
         if (userRepo.findByUsername("maksoy") == null) {
-            User user = new User();
+            user = new User();
             user.setUsername("maksoy");
             user.setFirstName("Mert");
             user.setLastName("Aksoy");
             user.setPassword("mert123");
 
-            userRepo.save(user);
+            user = userRepo.save(user);
+        }
+
+        // initCategories
+        if (user != null && categoryRepo.countByUserId(user.getId()) == 0) {
+            List<Category> categoryList = new LinkedList<>();
+            categoryList.add(new Category("SunOutlined", "My Day", user.getId()));
+            categoryList.add(new Category("StarOutlined", "Important", user.getId()));
+            categoryList.add(new Category("CalendarOutlined", "Planned", user.getId()));
+
+            categoryRepo.saveAll(categoryList);
         }
     }
 

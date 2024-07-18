@@ -1,12 +1,16 @@
 package com.mertaksoy.todoapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.couchbase.core.mapping.Document;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.validation.constraints.NotBlank;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Document
 public class User extends BaseEntity {

@@ -55,6 +55,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.springdoc</groupId>
@@ -83,6 +88,13 @@
             <version>0.11.2</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+
         <!--<dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast</artifactId>

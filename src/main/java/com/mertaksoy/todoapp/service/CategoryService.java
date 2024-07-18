@@ -135,4 +135,10 @@ public class CategoryService extends BaseService {
                 .body(new BaseResponse("Successful"));
     }
 
+    public Category getCategoryByTitleForTest(String title) {
+        Category category = categoryRepo.findByTitle(title);
+        log.info(":::::: category: {}", category != null ? category.toString() : null);
+        return category;
+    }
+
 }

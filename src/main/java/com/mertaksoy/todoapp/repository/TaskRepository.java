@@ -11,4 +11,6 @@ public interface TaskRepository extends CouchbaseRepository<Task, String> {
 
     Page<Task> findAllByCategoryId(Pageable pageable, String categoryId);
 
+    Task findAllByDescription(String description);
+
 }

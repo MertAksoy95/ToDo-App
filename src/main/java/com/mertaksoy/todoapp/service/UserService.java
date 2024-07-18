@@ -138,4 +138,8 @@ public class UserService {
                 .body(new BaseResponse("Successful"));
     }
 
+    public User getUserByUsernameForTest(String username) {
+        return userRepo.findByUsername(username);
+    }
+
 }

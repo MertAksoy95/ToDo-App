@@ -117,4 +117,8 @@ public class TaskService {
                 .body(new BaseResponse("Successful"));
     }
 
+    public Task getTaskByDescriptionForTest(String description) {
+        return taskRepo.findAllByDescription(description);
+    }
+
 }

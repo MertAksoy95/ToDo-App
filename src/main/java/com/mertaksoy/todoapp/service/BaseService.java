@@ -13,8 +13,12 @@ public class BaseService {
      * This method returns the id of the currently logged in user.
      */
     public String getLoggedInUserId() {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return user.getId();
+        if (SecurityContextHolder.getContext().getAuthentication() != null) {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            return user.getId();
+        }
+
+        return null;
     }
 
 }

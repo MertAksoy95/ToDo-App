@@ -2,6 +2,7 @@ package com.mertaksoy.todoapp.controller;
 
 import com.mertaksoy.todoapp.dto.BaseResponse;
 import com.mertaksoy.todoapp.dto.LoginRequest;
+import com.mertaksoy.todoapp.dto.UserDto;
 import com.mertaksoy.todoapp.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -31,6 +32,12 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<BaseResponse> login(@RequestBody LoginRequest loginRequest) {
         return authService.login(loginRequest);
+    }
+
+    @Operation(summary = "This is to public api for registration.")
+    @PostMapping("/register")
+    public ResponseEntity<BaseResponse> create(@RequestBody UserDto userDto) {
+        return authService.create(userDto);
     }
 
 }
